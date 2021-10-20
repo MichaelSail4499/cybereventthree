@@ -1,0 +1,42 @@
+How to install kali linux:
+Download VirtualBox. The updates for the application are not perfect. If you get ‘fatal system kernel error’ or something severe, downgrade VirtualBox.
+Follow the steps in this article: https://phoenixnap.com/kb/how-to-install-kali-linux-on-virtualbox 
+Once you’ve completed all steps, delete the .iso file from the beginning. The virtual machine is installed elsewhere on your computer. The file is just for installation purposes.
+Other tips in Google Slides presentation.
+
+
+Install all of this:
+sudo apt-get update 
+sudo apt-get upgrade 
+sudo apt-get dist-upgrade 
+sudo apt install python3-pip 
+sudo apt-get install python3 
+python3 -m pip install pysha3 
+sudo pip3 install bcrypt 
+sudo pip3 install scrypt 
+sudo pip3 install omnihash 
+
+
+How to test rainbow table:
+Refer to the 1st video from Google slides and summarize instructions in text.
+
+
+How to run omnihash:
+(test.txt is input, result.txt is output)
+omnihash "Desktop/test.txt" -j -f md4 -f md5 -f blake2b -f sha1 > "Desktop/result.txt"  
+oh "Desktop/test.txt" > "Desktop/result.txt"
+
+Type the hash into hashidentifier.
+Need to identify hash name before you use hashcat.
+
+How to run hashcat:
+Refer to the 3rd video from Google slides and summarize it in text.
+
+How to store passwords safely:
+bcrypt good companies use
+look at python code use that
+
+
+
+
+
