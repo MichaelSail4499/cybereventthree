@@ -16,7 +16,9 @@ We'll be going with a beginner friendly tool - Kali Linux. It is the premier cho
 
 You'll want to start off by downloading **[VirtualBox](https://www.virtualbox.org/)**. VirtualBox is a cross-platform virtualization software developed by Oracle Corporation that allows a user to run guest operating systems on their host operating system without the need for partitioning their hard drive or running another OS on dual boot. These guest OS include Microsoft Windows, Mac O X, Linux, and Oracle Solaris, amongst others.
 
-You'll then want to follow the steps in [**this article**](https://phoenixnap.com/kb/how-to-install-kali-linux-on-virtualbox). This can be a tedious process, but do not be discouraged! It is normal for bugs in software or hardware to occur. This is where iteration and patience is key. You may come across a *‘fatal system kernel error’* message in the process - in that case, downgrade VirtualBox to a different version.
+You'll then want to follow the steps in [**this article**](https://phoenixnap.com/kb/how-to-install-kali-linux-on-virtualbox). This can be a tedious process, but do not be discouraged! It is normal for bugs in software or hardware to occur. This is where iteration and patience is key. You may come across a *‘fatal system kernel error’* message in the process - in that case, downgrade VirtualBox to a different version.  
+
+Please set aside a generous amount of space on your hard disk. In step 2 part 7, the article says 8GB but choose 20GB. If you choose that low amount and run out of memory in your Kali Linux, you will have to partition more space from your host OS. This process is feasible but tedious. In addition, choose 2048 MB Memory size instead of the default 1024 MB in step 2 part 3.
 
 Once you have completed all steps, delete the `.iso` file. The virtual machine, which is an emulation of a computer system, will be installed already, so no need to consume disk space! It is there simply for installation purposes.
 
@@ -93,7 +95,21 @@ Repeat this rainbow table task using common passwords and random passwords. You 
 
 ## Omnihash
 
-Get hashes from some input.
+This tool is meant to get weaker hashes in bulk. Here is the two different commands you use:  
+```
+omnihash "Desktop/test.txt" -j -f md4 -f md5 -f blake2b -f sha1 > "Desktop/result.txt"  
+oh "Desktop/test.txt" > "Desktop/result.txt"
+```  
+This works if you create both files on your desktop. You can begin with omnihash or just type oh. The first command stores the hash values of md4, md5, blake2b, and sha1 in the file. The second command stores the input length + all 17 possible hash values into the file.  
+
+Alternatively, you can type input to the command line and continously append to the same .txt file. Below is that approach.  
+
+![](image/README/ohcommands.jpg)
+
+![](image/README/hashesresult.jpg)
+
+
+These files give you hashed values to work for hashcat. You have a baseline for testing... you know what the original input was to test password cracking.
 
 ## HashCat
 
