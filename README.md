@@ -146,7 +146,7 @@ All relevant code is in heavyhash.py . The code is for demonstration purposes. H
 Change up the code to check user credentials from a user login attempt. Set up a simple database with a hashed password and check the login password by putting it through the same hash algorithm. If it's a match, the user can login. If not, return an error message. You now know how to manage passwords for your projects.
 
 ### Task 3: 
-Play around with the bcrypt, scrypt parameters in heavyhash.py . Do you notice a difference in runtime? Companies face a similar trade-off in security vs. convenience. Using strong parameters is more secure, but a longer wait time. Light parameters will give a short wait time. What trade-off would you prefer for your projects?  
+Play around with the **work factor** parameter for bcrypt.gensalt(rounds) in heavyhash.py . The default value is rounds=12. Do you notice a difference in runtime? Companies face a similar trade-off in security vs. convenience. Using a higher work factor is more secure, but a longer wait time. Default work factor will give a short wait time. There are more parameters for you to manipulate in **[scrypt](https://cryptobook.nakov.com/mac-and-key-derivation/scrypt)** resulting in increased runtime. What trade-off would you prefer for your projects?  
 
 ## Conclusion  
 
