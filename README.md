@@ -62,7 +62,7 @@ LanMans are easy to crack because:
 1. Windows set a 14 character limit on passwords.  
 2. The password was split into two seperate parts before stored as two small hashes.
 
-You may view [Ophcrack's How-to Guide](https://sourceforge.net/p/ophcrack/wiki/ophcrack%20Howto/), but you'll primarily want to focus on their free [Ophcrack Rainbow Tables](https://ophcrack.sourceforge.io/tables.php) page.
+You may view **[Ophcrack's How-to Guide](https://sourceforge.net/p/ophcrack/wiki/ophcrack%20Howto/)**, but you'll primarily want to focus on their free **[Ophcrack Rainbow Tables](https://ophcrack.sourceforge.io/tables.php)** page.
 
 Now, install the XP Free Fast table:
 
@@ -72,7 +72,7 @@ You will receive the zip file `tables_xp_free_fast`. Extract `tables_xp_free_fas
 
 Now, create two text files: `PreLANPasswords.txt` and `PostLANPasswords.txt` and put those files in an easily accessible location. Paste any set of your own passwords into the `PreHashPasswords.txt` file.
 
-Now, go to [Tobtu Hash Generator](https://tobtu.com/lmntlm.php) online and paste your passwords into it. After selecting `Generate Passwords`, you will retrieve LM Hashes, which will be inserted into the `PostHashPasswords.txt` file:
+Now, go to **[Tobtu Hash Generator](https://tobtu.com/lmntlm.php)** online and paste your passwords into it. After selecting `Generate Passwords`, you will retrieve LM Hashes, which will be inserted into the `PostHashPasswords.txt` file:
 
 ![](image/README/1634721434251.png)
 
@@ -114,7 +114,7 @@ These files give you hashed values to work for hashcat. You have a baseline for 
 ## HashCat
 
 Suppose you are given some hash value and you're expected to find the original input...  
-Hashcat is very effective at cracking passwords, but there's a catch. You MUST know the correct hash algorithm associated with the hash value before using this tool. Luckily, `Hash Identifier` does just that. The tool is available on Kali Linux and very straightforward. Type your mystery hash value into the tool and it will return its best guesses (Possible hashes) and other possibilities (Least Possible Hashes). Frequently, the best guesses are wrong! If using the first hash guess returns nonsense in hashcat, go down the list in hash identifier and try that.  
+Hashcat is very effective at cracking passwords, but there's a catch. You MUST know the correct hash algorithm associated with the hash value before using this tool. Luckily, **Hash Identifier** does just that. The tool is available on Kali Linux and very straightforward. Type your mystery hash value into the tool and it will return its best guesses (Possible hashes) and other possibilities (Least Possible Hashes). Frequently, the best guesses are wrong! If using the first hash guess returns nonsense in hashcat, go down the list in hash identifier and try that.  
 
 ## Secure Password Storage  
 
@@ -123,11 +123,12 @@ Outdated hashes: LanMan, MD5, SHA-1, Panama
 Government standard: SHA-256  
 Strong hashes: Argon2id, bcrypt, scrypt, PBKDF2  
 
-When building a website, you want to store user passwords as hashes. However, using outdated hashes is vulnerable. Here, we'll use bcrypt and scrypt hashes.  
+When building a website, you want to store user passwords as hashes. However, using outdated hashes is a vulnerability. Here, we'll use bcrypt and scrypt hashes.  
 
 Proof that bcrypt, scrypt are great hashes:  
-Twitter, Reddit, Slack, Imgur, and GitHub use bcrypt.
+Twitter, Reddit, Slack, Imgur, and GitHub use bcrypt.  
 Facebook uses scrypt.  
+(NOTE: These websites may not EXCLUSIVELY use bcrypt/scrypt, but it is part of their process.)
 
 One of the reasons their strong is b/c it **salts** the passwords.  
 
@@ -139,10 +140,10 @@ All relevant code is in heavyhash.py . The code is meant more for demonstration 
 Change up the code to check user credentials from a user login attempt. Set up a simple database with a hashed password and check the login password by putting it through the same hash algorithm. If it's a match, the user can login. If not, return an error message. You now know how to manage passwords for your projects.
 
 ### Task 3: 
-Play around with the bcrypt, scrypt parameters in heavyhash.py . Do you notice a difference in runtime? Companies face the same trade-off of security vs. convenience. Stronger parameters is more secure but a longer wait time. Light parameters will give a short wait time. What trade-off would you prefer for your projects?  
+Play around with the bcrypt, scrypt parameters in heavyhash.py . Do you notice a difference in runtime? Companies face the same trade-off of security vs. convenience. Using strong parameters is more secure, but a longer wait time. Light parameters will give a short wait time. What trade-off would you prefer for your projects?  
 
 ## Conclusion  
 
-There are people that password crack all day. There are a lot more intricacies to password cracking not explored in this repository. If you've found this topic interesting, feel free to explore more about the topic online. Once you get comfortable using Kali Linux tools, familiarizing yourself with different hashes, effectively using Hashcat, feel free to call yourself a security researcher :).  
+There are people in the security community that password crack all day. There are a lot more intricacies to password cracking not explored in this repository. If you've found this topic interesting, feel free to explore more about the topic online. Once you get comfortable using Kali Linux tools, familiarizing yourself with different hashes, effectively using Hashcat, feel free to call yourself a security researcher :).  
 
 Thanks for taking interest in our club.
