@@ -10,7 +10,9 @@ By the end of this assignment, you will be able to:
 
 ## Install Kali Linux
 
-We'll be going with a beginner friendly tool - Kali Linux. It is the premier choice amongst pen testing tool; coming with a large community and advanced features.
+We'll be going with a beginner friendly tool - Kali Linux. It is the premier choice amongst pen testing tool; coming with a large community and advanced features.  
+
+![](image/README/'Kali Linux Art.jpg')
 
 You'll want to start off by downloading **[VirtualBox](https://www.virtualbox.org/)**. VirtualBox is a cross-platform virtualization software developed by Oracle Corporation that allows a user to run guest operating systems on their host operating system without the need for partitioning their hard drive or running another OS on dual boot. These guest OS include Microsoft Windows, Mac O X, Linux, and Oracle Solaris, amongst others.
 
@@ -111,6 +113,12 @@ Twitter, Reddit, Slack, Imgur, and GitHub use bcrypt.
 Facebook uses scrypt.  
 
 One of the reasons their strong is b/c it **salts** the passwords.  
+
+All relevant code is in heavyhash.py . The code is meant more for demonstration purposes. Here is the output:  
+
+![](image/README/'Heavyhash output.jpg')
+
+Change up the code to check user credentials from a user login attempt. Set up a simple database with a hashed password and check the login password by putting it through the same hash algorithm. If it's a match, the user can login. If not, return an error message. You now know how to manage passwords for your projects.
 
 Task: Play around with the bcrypt, scrypt parameters in heavyhash.py . Do you notice a difference in runtime? Companies face the same trade-off of security vs. convenience. Stronger parameters is more secure but a longer wait time. Light parameters will give a short wait time. What trade-off would you prefer for your projects?  
 
