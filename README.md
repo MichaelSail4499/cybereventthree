@@ -18,7 +18,7 @@ You'll then want to follow the steps in [**this article**](https://phoenixnap.co
 
 Once you have completed all steps, delete the `.iso` file. The virtual machine, which is an emulation of a computer system, will be installed already, so no need to consume disk space! It is there simply for installation purposes.
 
-Virtualbox runs once you turn off your hypervisor. Systems like WSL 2 requires hypervisor. You'll have to alternate between the commands to run the either system:  
+Virtualbox runs once you turn off your hypervisor. Systems like WSL 2 requires hypervisor. You'll have to alternate between the commands to run either system:  
 ```
 bcdedit /set hypervisorlaunchtype off  
 bcdedit /set hypervisorlaunchtype auto  
@@ -90,12 +90,12 @@ Task: Repeat this rainbow table task using common passwords and random passwords
 
 ## Omnihash
 
-sdufijnks
+Get hashes from some input.
 
 ## HashCat
 
 Suppose you are given some hash value and you're expected to find the original input...  
-Hashcat is very effective at cracking passwords, but there's a catch. You MUST know the hash algorithm associated with the hash value before using this tool. Luckily, `Hash Identifier` does just that. The tool is available on Kali Linux and very straightforward. Type your mystery hash value into the tool and it will return its best guesses (Possible hashes) and other possibilities (Least Possible Hashes). Frequently, the best guesses are wrong! If the first hash guess returns nonsense in hashcat, go down the list in hash identifier and try that.  
+Hashcat is very effective at cracking passwords, but there's a catch. You MUST know the correct hash algorithm associated with the hash value before using this tool. Luckily, `Hash Identifier` does just that. The tool is available on Kali Linux and very straightforward. Type your mystery hash value into the tool and it will return its best guesses (Possible hashes) and other possibilities (Least Possible Hashes). Frequently, the best guesses are wrong! If using the first hash guess returns nonsense in hashcat, go down the list in hash identifier and try that.  
 
 ## Secure Password Storage  
 
@@ -112,4 +112,10 @@ Facebook uses scrypt.
 
 One of the reasons their strong is b/c it **salts** the passwords.  
 
-Task: Play around with the bcrypt, scrypt parameters in heavyhash.py . Do you notice a difference in runtime? Companies face the same dilemna of security vs. convenience. Stronger parameters is more secure but a longer wait time. Light parameters is less secure but a short wait time. What trade-off would you prefer for your projects? 
+Task: Play around with the bcrypt, scrypt parameters in heavyhash.py . Do you notice a difference in runtime? Companies face the same trade-off of security vs. convenience. Stronger parameters is more secure but a longer wait time. Light parameters will give a short wait time. What trade-off would you prefer for your projects?  
+
+## Conclusion  
+
+There are people that password crack all day. There are a lot more intricacies to password cracking not explored in this repository. If you've found this topic interesting, feel free to explore more about the topic online. Once you get comfortable using Kali Linux tools, familiarizing yourself with different hashes, effectively using Hashcat, feel free to call yourself a security researcher :).  
+
+Thanks for taking interest in our club.
