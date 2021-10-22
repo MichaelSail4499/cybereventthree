@@ -18,7 +18,7 @@ You'll then want to follow the steps in [**this article**](https://phoenixnap.co
 
 Once you have completed all steps, delete the `.iso` file. The virtual machine, which is an emulation of a computer system, will be installed already, so no need to consume disk space! It is there simply for installation purposes.
 
-Virtualbox runs once you turn off your hypervisor. Systems like WSL 2 requires hypervisor. You'll have to alternate between the commands to run the either system:
+Virtualbox runs once you turn off your hypervisor. Systems like WSL 2 requires hypervisor. You'll have to alternate between the commands to run the either system:  
 <code>
 bcdedit /set hypervisorlaunchtype off  
 bcdedit /set hypervisorlaunchtype auto
