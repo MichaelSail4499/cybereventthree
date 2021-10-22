@@ -44,7 +44,7 @@ You may copy all these commands and paste them into your terminal, rather than g
 
 ## Ophcrack - LanMan Rainbow Table
 
-Install [**Ophcrack**](https://ophcrack.sourceforge.io/), an open-source program that uses rainbow tables to crack Windows log-in passwords using LM hashes. It's a popular tool for recovering Windows passwords, as an alternative for say, resetting one's Windows password if missing.
+**Ophcrack** is an open-source program that uses rainbow tables to crack Windows log-in passwords using LM hashes. It's a popular tool for recovering Windows passwords, as an alternative for say, resetting one's Windows password if missing.
 
 You may view [Ophcrack's How-to Guide](https://sourceforge.net/p/ophcrack/wiki/ophcrack%20Howto/), but you'll primarily want to focus on their free [Ophcrack Rainbow Tables](https://ophcrack.sourceforge.io/tables.php) page.
 
