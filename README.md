@@ -21,17 +21,18 @@ Once you have completed all steps, delete the `.iso` file. The virtual machine, 
 Virtualbox runs once you turn off your hypervisor. Systems like WSL 2 requires hypervisor. You'll have to alternate between the commands to run the either system:  
 `bcdedit /set hypervisorlaunchtype off`  
 `bcdedit /set hypervisorlaunchtype auto`  
-Run the relevant command on powershell with administrator privledges. Then, restart the computer. 
+Run the relevant command on powershell with administrator privileges. Then, restart the computer. 
 
 ### Alternatives to Kali Linux
 
 If you need a lightweight alternative, **[Parrot OS](https://parrotsec.org/docs/installation.html)** is your best friend. It has a similar toolset and is an equally viable option to Kali Linux.
 
-You could also install **[Window Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install)** on your Windows system. This helps if you are running low on space, since it installs the Linux tools you need, rather than the OS itself.
+You could also install **[Window Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install)** on your Windows system. This helps if you are running low on space, since you can install the Linux tools you need, rather than the OS itself. Click **[here](https://simontaplin.net/2019/03/29/how-to-install-all-the-penetration-testing-tools-in-kali-linux-for-windows-subsystem-for-linux/)** to 
+learn more.
 
 ## Getting Started
 
-Once you have a Linux interface setup, you'll want to open up your terminal and install the following commands.
+Once you have Kali Linux interface setup, you'll want to open up your terminal and install the following commands.
 
 ```
 sudo apt-get update 
@@ -49,7 +50,7 @@ You may copy all these commands and paste them into your terminal, rather than g
 
 ## Ophcrack - LanMan Rainbow Table
 
-**Ophcrack** is an open-source program that uses rainbow tables to crack Windows XP log-in passwords using LM hashes. It's a popular tool for recovering Windows passwords, as an alternative for say, resetting one's Windows password if missing.
+**Ophcrack** is an open-source program that uses rainbow tables to crack Windows XP log-in passwords using LM hashes algorithm. It's a popular tool for recovering Windows passwords, as an alternative for say, resetting one's Windows password if missing. It comes preinstalled with Kali Linux.
 
 You may view [Ophcrack's How-to Guide](https://sourceforge.net/p/ophcrack/wiki/ophcrack%20Howto/), but you'll primarily want to focus on their free [Ophcrack Rainbow Tables](https://ophcrack.sourceforge.io/tables.php) page.
 
@@ -59,7 +60,7 @@ Now, install the XP Free Fast table:
 
 You will receive the zip file `tables_xp_free_fast`. Extract `tables_xp_free_fast` into its own directory and put it in a location you know you will find it in.
 
-Now, create two text files: `PreLANPasswords.txt` and `PostLABPasswords.txt` and put those files in an easily accessible location. Paste any set of your own passwords into the `PreHashPasswords.txt` file.
+Now, create two text files: `PreLANPasswords.txt` and `PostLANPasswords.txt` and put those files in an easily accessible location. Paste any set of your own passwords into the `PreHashPasswords.txt` file.
 
 Now, go to [Tobtu Hash Generator](https://tobtu.com/lmntlm.php) online and paste your passwords into it. After selecting `Generate Passwords`, you will retrieve LM Hashes, which will be inserted into the `PostHashPasswords.txt` file:
 
