@@ -96,6 +96,7 @@ Repeat this rainbow table task using common passwords and random passwords. You 
 ## Omnihash
 
 This tool is meant to get weaker hashes in bulk. Here is two different commands:  
+(*NOTE: This isn't an explicit tool, run from terminal*)
 ```
 omnihash "Desktop/test.txt" -j -f md4 -f md5 -f blake2b -f sha1 > "Desktop/result.txt"  
 oh "Desktop/test.txt" > "Desktop/result.txt"
