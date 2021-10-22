@@ -20,7 +20,7 @@ You'll then want to follow the steps in **[this article](https://phoenixnap.com/
 
 Please set aside a generous amount of space on your hard disk. In step 2 part 7, the article says 8GB but choose 20GB. If you choose that low amount and run out of memory in your Kali Linux, you will have to partition more space from your host OS. This process is feasible but tedious. In addition, choose 2048 MB Memory size instead of the default 1024 MB in step 2 part 3.
 
-Once you have completed all steps, delete the `.iso` file. The virtual machine, which is an emulation of a computer system, will be installed already, so no need to consume disk space! It is there simply for installation purposes.
+Once you have completed all steps, delete the `.iso` file. The virtual machine, which is an emulation of a computer system, is already installed, so no need to consume disk space! It is there simply for installation purposes.
 
 Virtualbox runs once you turn off your hypervisor. Systems like WSL 2 requires hypervisor. You'll have to alternate between the commands to run either system:  
 ```
@@ -33,12 +33,12 @@ Run the relevant command on Powershell with administrator privileges. Then, rest
 
 If you need a lightweight alternative, **[Parrot OS](https://parrotsec.org/docs/installation.html)** is your best friend. It has a similar toolset and is an equally viable option to Kali Linux.
 
-You could also install **[Window Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install)** on your Windows system. This helps if you are running low on space, since you can install the Linux tools you need, rather than the OS itself. Click **[here](https://simontaplin.net/2019/03/29/how-to-install-all-the-penetration-testing-tools-in-kali-linux-for-windows-subsystem-for-linux/)** to 
+You could also install **[Window Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install)** on your Windows OS. This helps if you are running low on space, since you can install the Linux tools you need, rather than the OS itself. Click **[here](https://simontaplin.net/2019/03/29/how-to-install-all-the-penetration-testing-tools-in-kali-linux-for-windows-subsystem-for-linux/)** to 
 learn more.
 
 ## Getting Started
 
-Once you have Kali Linux interface setup, you'll want to open up your terminal and install the following commands.
+Once you have Kali Linux interface setup, you'll want to open up your terminal in Kali Linux and install the following commands.
 
 ```
 sudo apt-get update 
@@ -86,16 +86,16 @@ Load->Session File->`postLANPasswords`. A list of your LM Hashes will appear in 
 
 Press `Crack` in the toolbar, and commence cracking. View which passwords return and which passwords don't return!
 
-If you compare the results with your `PreLANPasswords` file, you will see which passwords are easy to crack. You can do this by comparing the concatenation of the `LM Pwd 1` and `LM Pwd 2` tables. In the example below, you can see the passwords that were returned and those which were not:
+If you compare the results with your `PreLANPasswords` file, you will see which passwords are easy to crack. You can do this by comparing the concatenation of the `LM Pwd 1` and `LM Pwd 2` columns. In the example below, you can see the passwords that were returned and those which were not:
 
 ![](image/README/1634721544901.png)  
 
 ### Task 1: 
-Repeat this rainbow table task using common passwords and random passwords. You can download more rainbow tables from the website and set the corresponding name in Ophcrack as before. Be wary of the amount of space in your Kali Linux! Download the tables that are less than 5GB. Multiple tables will run per crack. After multiple runs, do you see any limitations of using rainbow tables for password cracking? How does this align with the way rainbow tables work?
+Repeat this rainbow table task using common passwords and random passwords. You can download more rainbow tables from the website and set the corresponding name in Ophcrack as before. Be wary of the amount of space in your Kali Linux! Download the tables that are less than 5GB. Multiple tables will run per crack. After multiple runs, do you see any limitations on using rainbow tables for password cracking? How does this align with the way rainbow tables work?
 
 ## Omnihash
 
-This tool is meant to get weaker hashes in bulk. Here is the two different commands you use:  
+This tool is meant to get weaker hashes in bulk. Here is two different commands:  
 ```
 omnihash "Desktop/test.txt" -j -f md4 -f md5 -f blake2b -f sha1 > "Desktop/result.txt"  
 oh "Desktop/test.txt" > "Desktop/result.txt"
@@ -109,12 +109,12 @@ Alternatively, you can type input to the command line and continously append to 
 ![](image/README/hashesresult.jpg)
 
 
-These files give you hashed values to work for hashcat. You have a baseline for testing... you know what the original input was to test password cracking.
+These files give you hashed values for use in Hashcat. You have a baseline for testing... you know the original input to test the password cracking results.
 
 ## Hashcat
 
 Suppose you are given some hash value and you're expected to find the original input...  
-Hashcat is very effective at cracking passwords, but there's a catch. You MUST know the correct hash algorithm associated with the hash value before using this tool. Luckily, **hash-identifier** does just that. The tool is available on Kali Linux and it's very straightforward. Type your mystery hash value into the tool and it will return its best guesses (Possible hashes) and other possibilities (Least Possible Hashes). Frequently, the best guesses are wrong! If using the first hash guess returns nonsense in hashcat, go down the list in hash identifier and try that.  
+Hashcat is very effective at cracking passwords, but there's a catch. You MUST know the correct hash algorithm associated with the hash value before using this tool. Luckily, **hash-identifier** does just that. The tool is preinstalled on Kali Linux and it's very straightforward. Type your mystery hash value into the tool and it will return its best guesses (Possible hashes) and other possibilities (Least Possible Hashes). Frequently, the best guesses are wrong! If using the first hash guess returns nonsense in Hashcat, go down the list in hash identifier and try that.  
 
 Below is the format of HashCat commands:  
 
@@ -125,16 +125,16 @@ A quick demo of Hashcat would not do this tool justice. Look at the official doc
 ## Secure Password Storage  
 
 Here's a quick overview of hashes.  
-Outdated hashes: LanMan, MD5, SHA-1, Panama  
-Government standard: SHA-256  
-Strong hashes: Argon2id, bcrypt, scrypt, PBKDF2  
+1. Outdated hashes: LanMan, MD5, SHA-1, Panama  
+2. Government standard: SHA-256  
+3. Strong hashes: Argon2id, bcrypt, scrypt, PBKDF2  
 
 When building a website, you want to store user passwords as hashes. However, using outdated hashes is a vulnerability. Here, we'll use bcrypt and scrypt hashes.  
 
 Proof that bcrypt, scrypt are great hashes:  
-Twitter, Reddit, Slack, Imgur, and GitHub use bcrypt.  
-Facebook uses scrypt.  
-(NOTE: These websites may not EXCLUSIVELY use bcrypt/scrypt, but it is part of their process.)
+**Twitter**, **Reddit**, **Slack**, **Imgur**, and **GitHub** use bcrypt.  
+**Facebook** uses scrypt.  
+(*NOTE: These websites may not EXCLUSIVELY use bcrypt/scrypt, but it is part of their process.*)
 
 One of the reasons their strong is b/c it **salts** the passwords.  
 
