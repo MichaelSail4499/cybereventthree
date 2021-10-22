@@ -27,7 +27,7 @@ bcdedit /set hypervisorlaunchtype auto
 ```
 Run the relevant command on powershell with administrator privileges. Then, restart the computer. 
 
-### Alternatives to Kali Linux
+## Alternatives to Kali Linux
 
 If you need a lightweight alternative, **[Parrot OS](https://parrotsec.org/docs/installation.html)** is your best friend. It has a similar toolset and is an equally viable option to Kali Linux.
 
@@ -88,7 +88,8 @@ If you compare the results with your `PreLANPasswords` file, you will see which 
 
 ![](image/README/1634721544901.png)  
 
-Task: Repeat this rainbow table task using common passwords and random passwords. You can download more rainbow tables from the website and set the corresponding name in Ophcrack as before. Be wary of the amount of space on your Kali Linux! Download the tables that are less than 5GB. Multiple tables will run per crack. After multiple runs, do you see any limitations of using rainbow tables for password cracking? How does this align with the way rainbow tables work?
+### Task 1: 
+Repeat this rainbow table task using common passwords and random passwords. You can download more rainbow tables from the website and set the corresponding name in Ophcrack as before. Be wary of the amount of space on your Kali Linux! Download the tables that are less than 5GB. Multiple tables will run per crack. After multiple runs, do you see any limitations of using rainbow tables for password cracking? How does this align with the way rainbow tables work?
 
 ## Omnihash
 
@@ -118,9 +119,11 @@ All relevant code is in heavyhash.py . The code is meant more for demonstration 
 
 ![](image/README/Heavyhashoutput.jpg)
 
+### Task 2: 
 Change up the code to check user credentials from a user login attempt. Set up a simple database with a hashed password and check the login password by putting it through the same hash algorithm. If it's a match, the user can login. If not, return an error message. You now know how to manage passwords for your projects.
 
-Task: Play around with the bcrypt, scrypt parameters in heavyhash.py . Do you notice a difference in runtime? Companies face the same trade-off of security vs. convenience. Stronger parameters is more secure but a longer wait time. Light parameters will give a short wait time. What trade-off would you prefer for your projects?  
+### Task 3: 
+Play around with the bcrypt, scrypt parameters in heavyhash.py . Do you notice a difference in runtime? Companies face the same trade-off of security vs. convenience. Stronger parameters is more secure but a longer wait time. Light parameters will give a short wait time. What trade-off would you prefer for your projects?  
 
 ## Conclusion  
 
