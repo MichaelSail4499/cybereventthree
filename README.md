@@ -70,9 +70,9 @@ Now, install the XP Free Fast table:
 
 You will receive the zip file `tables_xp_free_fast`. Extract `tables_xp_free_fast` into its own directory and put it in a location you know you will find it.
 
-Now, create two text files: `preLANPasswords.txt` and `postLANPasswords.txt` and put those files in an easily accessible location. Paste any set of your own passwords into the `preHashPasswords.txt` file.
+Now, create two text files: `preLANPasswords.txt` and `postLANPasswords.txt` and put those files in an easily accessible location. Paste any set of your own passwords into the `preLANPasswords.txt` file.
 
-Now, go to **[Tobtu Hash Generator](https://tobtu.com/lmntlm.php)** online and paste your passwords into it. After selecting `Generate Passwords`, you will retrieve LM Hashes, which will be inserted into the `PostHashPasswords.txt` file:
+Now, go to **[Tobtu Hash Generator](https://tobtu.com/lmntlm.php)** online and paste your passwords into it. After selecting `Generate Passwords`, you will retrieve LM Hashes, which will be inserted into the `postLANPasswords.txt` file:
 
 ![](image/README/1634721434251.png)
 
@@ -101,7 +101,7 @@ This tool is meant to get weaker hashes in bulk. Here is two different commands:
 omnihash "Desktop/test.txt" -j -f md4 -f md5 -f blake2b -f sha1 > "Desktop/result.txt"  
 oh "Desktop/test.txt" > "Desktop/result.txt"
 ```  
-This works if you create both files on your desktop. You can begin with omnihash or just type oh. The first command stores the hash values of md4, md5, blake2b, and sha1 in the file. The second command stores the input length + all 17 possible hash values into the file.  
+This works if you create both files on your desktop. Input any text into test.txt . You can begin with omnihash or just type oh. The first command stores the hash values of md4, md5, blake2b, and sha1 in the file. The second command stores the input length + all 17 possible hash values into the file.  
 
 Alternatively, you can type input to the command line and continously append to the same .txt file. Below is that approach.  
 
@@ -115,7 +115,7 @@ These files give you hashed values for use in Hashcat. You have a baseline for t
 ## Hashcat
 
 Suppose you are given some hash value and you're expected to find the original input...  
-Hashcat is very effective at cracking passwords, but there's a catch. You MUST know the correct hash algorithm associated with the hash value before using this tool. Luckily, **hash-identifier** does just that. The tool is preinstalled on Kali Linux and it's very straightforward. Type your mystery hash value into the tool and it will return its best guesses (Possible hashes) and other possibilities (Least Possible Hashes). Frequently, the best guesses are wrong! If using the first hash guess returns nonsense in Hashcat, go down the list in hash identifier and try that.  
+Hashcat is very effective at cracking passwords, but there's a catch. You MUST know the correct hash algorithm associated with the hash value before using this tool. Luckily, **hash-identifier** does just that. The tool is preinstalled on Kali Linux and it's very straightforward. Type your mystery hash value into the tool and it will return its best guesses (Possible Hashs) and other possibilities (Least Possible Hashs). Frequently, the best guesses are wrong! If using the first hash guess returns nonsense in Hashcat, go down the list in hash-identifier and try that.  
 
 Below is the format of HashCat commands:  
 
@@ -126,9 +126,9 @@ A quick demo of Hashcat would not do this tool justice. Look at the official doc
 ## Secure Password Storage  
 
 Here's a quick overview of hashes.  
-1. Outdated hashes: LanMan, MD5, SHA-1, Panama  
-2. Government standard: SHA-256  
-3. Strong hashes: Argon2id, bcrypt, scrypt, PBKDF2  
+1. **Outdated hashes**: LanMan, MD5, SHA-1, Panama  
+2. **Government standard**: SHA-256  
+3. **Strong hashes**: Argon2id, bcrypt, scrypt, PBKDF2  
 
 When building a website, you want to store user passwords as hashes. However, using outdated hashes is a vulnerability. Here, we'll use bcrypt and scrypt hashes.  
 
