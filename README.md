@@ -1,12 +1,12 @@
 # Password Cracking
 
-Today, we'll be **password cracking** on your favorite Linux interface.  The purpose of this assignment is so that you may familiarize yourself with offensive security and **red team principles**. Thus, by the means of hashing, you will learn what the best password principles are.
+Today, we'll be **password cracking** on your favorite Linux interface.  The purpose of this assignment is so that you may familiarize yourself with offensive security and **red team principles**. Hopefully, this assignment will encourage you to use stronger passwords for your online accounts.
 
-We'll primarily be working with the **LanMan** hash, which was used in outdated Windows versions.
-
-We'll be using Hash Identifier Accuracy for...
-
-We'll be using Hashcat for...
+By the end of this assignment, you will be able to:  
+- Navigate through the Kali Linux environment.
+- Understand the difference between weak hashes and strong hashes.
+- Familiarize yourself with tools used for CTF competitions.
+- Implement secure password storage for your own projects.
 
 ## Install Kali Linux
 
@@ -50,7 +50,11 @@ You may copy all these commands and paste them into your terminal, rather than g
 
 ## Ophcrack - LanMan Rainbow Table
 
-**Ophcrack** is an open-source program that uses rainbow tables to crack Windows XP log-in passwords using LM hashes algorithm. It's a popular tool for recovering Windows passwords, as an alternative for say, resetting one's Windows password if missing. It comes preinstalled with Kali Linux.
+**Ophcrack** is an open-source program that uses rainbow tables to crack Windows XP log-in passwords using LM hashes algorithm. It's a popular tool for recovering Windows passwords, as an alternative for say, resetting one's Windows password if missing. It comes preinstalled with Kali Linux.  
+
+LanMans are easy to crack because:  
+1. Windows set a 14 character limit on passwords.  
+2. The password was split into two seperate parts before stored as two small hashes.
 
 You may view [Ophcrack's How-to Guide](https://sourceforge.net/p/ophcrack/wiki/ophcrack%20Howto/), but you'll primarily want to focus on their free [Ophcrack Rainbow Tables](https://ophcrack.sourceforge.io/tables.php) page.
 
@@ -66,11 +70,11 @@ Now, go to [Tobtu Hash Generator](https://tobtu.com/lmntlm.php) online and paste
 
 ![](image/README/1634721434251.png)
 
-In OphCrack, open `Tables` in the toolbar and select `XP free fast`. Then, open the folder  `tables_xp_free_fast` and install the tables in the `XP free fast` table:
+In OphCrack, open `Tables` in the toolbar and select `XP free fast`. Click `Install`. Then, open the folder `tables_xp_free_fast`:
 
 ![](image/README/1634721456406.png)
 
-Load the `postLANPasswords` file into Ophcrack. A list of your LM Hashes will appear in its own column:
+Load->Session File->`postLANPasswords`. A list of your LM Hashes will appear in its own column:
 
 ![](image/README/1634721476082.png)
 
@@ -78,12 +82,32 @@ Press `Crack` in the toolbar, and commence cracking. View which passwords return
 
 If you compare the results with your `PreLANPasswords` file, you will see which passwords are easy to crack. You can do this by comparing with the `LM PWD 1` table. In the example below, you can see the passwords that were returned and those which were not:
 
-![](image/README/1634721544901.png)
+![](image/README/1634721544901.png)  
 
-## Hash Identifier Accuracy
+Task: Repeat this rainbow table task using common passwords and random passwords. You can download more rainbow tables from the website and set the corresponding name in Ophcrack as before. Be wary of the amount of space on your Kali Linux! Download the tables that are less than 5GB. Multiple tables will run per crack. After multiple runs, do you see any limitations of using rainbow tables for password cracking? How does this align with the way rainbow tables work?
+
+## Omnihash
 
 sdufijnks
 
 ## HashCat
 
-dsfnjs
+Suppose you are given some hash value and you're expected to find the original input...  
+Hashcat is very effective at cracking passwords, but there's a catch. You MUST know the hash algorithm associated with the hash value before using this tool. Luckily, `Hash Identifier` does just that. The tool is available on Kali Linux and very straightforward. Type your mystery hash value into the tool and it will return its best guesses (Possible hashes) and other possibilities (Least Possible Hashes). Frequently, the best guesses are wrong! If the first hash guess returns nonsense in hashcat, go down the list in hash identifier and try that.  
+
+## Secure Password Storage  
+
+Here's a quick overview of hashes.  
+Outdated hashes: LanMan, MD5, SHA-1, Panama  
+Government standard: SHA-256  
+Strong hashes: Argon2id, bcrypt, scrypt, PBKDF2  
+
+When building a website, you want to store user passwords as hashes. However, using outdated hashes is vulnerable. Here, we'll use bcrypt and scrypt hashes.  
+
+Proof that bcrypt, scrypt are great hashes:  
+Twitter, Reddit, Slack, Imgur, and GitHub use bcrypt.
+Facebook uses scrypt.  
+
+One of the reasons their strong is b/c it **salts** the passwords.  
+
+Task: Play around with the bcrypt, scrypt parameters in heavyhash.py . Do you notice a difference in runtime? Companies face the same dilemna of security vs. convenience. Stronger parameters is more secure but a longer wait time. Light parameters is less secure but a short wait time. What trade-off would you prefer for your projects? 
