@@ -10,13 +10,13 @@ By the end of this assignment, you will be able to:
 
 ## Install Kali Linux
 
-We'll be going with a beginner friendly tool - Kali Linux. It is the premier choice amongst pen testing tool; coming with a large community and advanced features.  
+We'll be using a beginner friendly tool - Kali Linux. It is the premier pen testing tool. In addition, it has a large community and advanced features.  
 
 ![](image/README/KaliLinuxArt.jpg)
 
 You'll want to start off by downloading **[VirtualBox](https://www.virtualbox.org/)**. VirtualBox is a cross-platform virtualization software developed by Oracle Corporation that allows a user to run guest operating systems on their host operating system without the need for partitioning their hard drive or running another OS on dual boot. These guest OS include Microsoft Windows, Mac O X, Linux, and Oracle Solaris, amongst others.
 
-You'll then want to follow the steps in [**this article**](https://phoenixnap.com/kb/how-to-install-kali-linux-on-virtualbox). This can be a tedious process, but do not be discouraged! It is normal for bugs in software or hardware to occur. This is where iteration and patience is key. You may come across a *‘fatal system kernel error’* message in the process - in that case, downgrade VirtualBox to a different version.  
+You'll then want to follow the steps in **[this article](https://phoenixnap.com/kb/how-to-install-kali-linux-on-virtualbox)**. This can be a tedious process, but do not be discouraged! It is normal for bugs in software or hardware to occur. This is where iteration and patience is key. You may come across a *‘fatal system kernel error’* message in the process - in that case, downgrade VirtualBox to a different version.  
 
 Please set aside a generous amount of space on your hard disk. In step 2 part 7, the article says 8GB but choose 20GB. If you choose that low amount and run out of memory in your Kali Linux, you will have to partition more space from your host OS. This process is feasible but tedious. In addition, choose 2048 MB Memory size instead of the default 1024 MB in step 2 part 3.
 
@@ -27,7 +27,7 @@ Virtualbox runs once you turn off your hypervisor. Systems like WSL 2 requires h
 bcdedit /set hypervisorlaunchtype off  
 bcdedit /set hypervisorlaunchtype auto  
 ```
-Run the relevant command on powershell with administrator privileges. Then, restart the computer. 
+Run the relevant command on Powershell with administrator privileges. Then, restart the computer. 
 
 ## Alternatives to Kali Linux
 
@@ -52,7 +52,7 @@ sudo pip3 install scrypt
 sudo pip3 install omnihash 
 ```
 
-You may copy all these commands and paste them into your terminal, rather than going one by one. We'll be going over the usage of the packages installed shortly.
+You may copy all these commands and paste them into your terminal, rather than going one by one. All of the installed packages will be used throughout this assignment.
 
 ## Ophcrack - LanMan Rainbow Table
 
@@ -68,7 +68,7 @@ Now, install the XP Free Fast table:
 
 ![](image/README/1634721406140.png)
 
-You will receive the zip file `tables_xp_free_fast`. Extract `tables_xp_free_fast` into its own directory and put it in a location you know you will find it in.
+You will receive the zip file `tables_xp_free_fast`. Extract `tables_xp_free_fast` into its own directory and put it in a location you know you will find it.
 
 Now, create two text files: `PreLANPasswords.txt` and `PostLANPasswords.txt` and put those files in an easily accessible location. Paste any set of your own passwords into the `PreHashPasswords.txt` file.
 
@@ -86,12 +86,12 @@ Load->Session File->`postLANPasswords`. A list of your LM Hashes will appear in 
 
 Press `Crack` in the toolbar, and commence cracking. View which passwords return and which passwords don't return!
 
-If you compare the results with your `PreLANPasswords` file, you will see which passwords are easy to crack. You can do this by comparing with the `LM PWD 1` table. In the example below, you can see the passwords that were returned and those which were not:
+If you compare the results with your `PreLANPasswords` file, you will see which passwords are easy to crack. You can do this by comparing the concatenation of the `LM Pwd 1` and `LM Pwd 2` tables. In the example below, you can see the passwords that were returned and those which were not:
 
 ![](image/README/1634721544901.png)  
 
 ### Task 1: 
-Repeat this rainbow table task using common passwords and random passwords. You can download more rainbow tables from the website and set the corresponding name in Ophcrack as before. Be wary of the amount of space on your Kali Linux! Download the tables that are less than 5GB. Multiple tables will run per crack. After multiple runs, do you see any limitations of using rainbow tables for password cracking? How does this align with the way rainbow tables work?
+Repeat this rainbow table task using common passwords and random passwords. You can download more rainbow tables from the website and set the corresponding name in Ophcrack as before. Be wary of the amount of space in your Kali Linux! Download the tables that are less than 5GB. Multiple tables will run per crack. After multiple runs, do you see any limitations of using rainbow tables for password cracking? How does this align with the way rainbow tables work?
 
 ## Omnihash
 
@@ -111,10 +111,16 @@ Alternatively, you can type input to the command line and continously append to 
 
 These files give you hashed values to work for hashcat. You have a baseline for testing... you know what the original input was to test password cracking.
 
-## HashCat
+## Hashcat
 
 Suppose you are given some hash value and you're expected to find the original input...  
-Hashcat is very effective at cracking passwords, but there's a catch. You MUST know the correct hash algorithm associated with the hash value before using this tool. Luckily, **Hash Identifier** does just that. The tool is available on Kali Linux and very straightforward. Type your mystery hash value into the tool and it will return its best guesses (Possible hashes) and other possibilities (Least Possible Hashes). Frequently, the best guesses are wrong! If using the first hash guess returns nonsense in hashcat, go down the list in hash identifier and try that.  
+Hashcat is very effective at cracking passwords, but there's a catch. You MUST know the correct hash algorithm associated with the hash value before using this tool. Luckily, **hash-identifier** does just that. The tool is available on Kali Linux and it's very straightforward. Type your mystery hash value into the tool and it will return its best guesses (Possible hashes) and other possibilities (Least Possible Hashes). Frequently, the best guesses are wrong! If using the first hash guess returns nonsense in hashcat, go down the list in hash identifier and try that.  
+
+Below is the format of HashCat commands:  
+
+![](image/README/hashcatformat.png)  
+
+A quick demo of Hashcat would not do this tool justice. Look at the official documentation and view Youtube tutorials. There is so much depth to this tool, you will need to do online research in your own time to effectively use it.
 
 ## Secure Password Storage  
 
@@ -132,7 +138,7 @@ Facebook uses scrypt.
 
 One of the reasons their strong is b/c it **salts** the passwords.  
 
-All relevant code is in heavyhash.py . The code is meant more for demonstration purposes. Here is the output:  
+All relevant code is in heavyhash.py . The code is for demonstration purposes. Here is the output:  
 
 ![](image/README/Heavyhashoutput.jpg)
 
@@ -140,7 +146,7 @@ All relevant code is in heavyhash.py . The code is meant more for demonstration 
 Change up the code to check user credentials from a user login attempt. Set up a simple database with a hashed password and check the login password by putting it through the same hash algorithm. If it's a match, the user can login. If not, return an error message. You now know how to manage passwords for your projects.
 
 ### Task 3: 
-Play around with the bcrypt, scrypt parameters in heavyhash.py . Do you notice a difference in runtime? Companies face the same trade-off of security vs. convenience. Using strong parameters is more secure, but a longer wait time. Light parameters will give a short wait time. What trade-off would you prefer for your projects?  
+Play around with the bcrypt, scrypt parameters in heavyhash.py . Do you notice a difference in runtime? Companies face a similar trade-off in security vs. convenience. Using strong parameters is more secure, but a longer wait time. Light parameters will give a short wait time. What trade-off would you prefer for your projects?  
 
 ## Conclusion  
 
