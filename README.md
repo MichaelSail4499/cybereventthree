@@ -70,7 +70,7 @@ Now, install the XP Free Fast table:
 
 You will receive the zip file `tables_xp_free_fast`. Extract `tables_xp_free_fast` into its own directory and put it in a location you know you will find it.
 
-Now, create two text files: `PreLANPasswords.txt` and `PostLANPasswords.txt` and put those files in an easily accessible location. Paste any set of your own passwords into the `PreHashPasswords.txt` file.
+Now, create two text files: `preLANPasswords.txt` and `postLANPasswords.txt` and put those files in an easily accessible location. Paste any set of your own passwords into the `preHashPasswords.txt` file.
 
 Now, go to **[Tobtu Hash Generator](https://tobtu.com/lmntlm.php)** online and paste your passwords into it. After selecting `Generate Passwords`, you will retrieve LM Hashes, which will be inserted into the `PostHashPasswords.txt` file:
 
@@ -86,7 +86,7 @@ Load->Session File->`postLANPasswords`. A list of your LM Hashes will appear in 
 
 Press `Crack` in the toolbar, and commence cracking. View which passwords return and which passwords don't return!
 
-If you compare the results with your `PreLANPasswords` file, you will see which passwords are easy to crack. You can do this by comparing the concatenation of the `LM Pwd 1` and `LM Pwd 2` columns. In the example below, you can see the passwords that were returned and those which were not:
+If you compare the results with your `preLANPasswords` file, you will see which passwords are easy to crack. You can do this by comparing the concatenation of the `LM Pwd 1` and `LM Pwd 2` columns. In the example below, you can see the passwords that were returned and those which were not:
 
 ![](image/README/1634721544901.png)  
 
