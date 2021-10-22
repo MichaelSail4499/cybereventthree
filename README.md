@@ -18,6 +18,11 @@ You'll then want to follow the steps in [**this article**](https://phoenixnap.co
 
 Once you have completed all steps, delete the `.iso` file. The virtual machine, which is an emulation of a computer system, will be installed already, so no need to consume disk space! It is there simply for installation purposes.
 
+Virtualbox runs once you turn off your hypervisor. Systems like WSL 2 requires hypervisor. You'll have to alternate between the commands to run the either system:
+<bcdedit /set hypervisorlaunchtype off
+bcdedit /set hypervisorlaunchtype auto>
+Run the relevant command on powershell with administrator privledges. Then, restart the computer. 
+
 ### Alternatives to Kali Linux
 
 If you need a lightweight alternative, **[Parrot OS](https://parrotsec.org/docs/installation.html)** is your best friend. It has a similar toolset and is an equally viable option to Kali Linux.
@@ -44,7 +49,7 @@ You may copy all these commands and paste them into your terminal, rather than g
 
 ## Ophcrack - LanMan Rainbow Table
 
-**Ophcrack** is an open-source program that uses rainbow tables to crack Windows log-in passwords using LM hashes. It's a popular tool for recovering Windows passwords, as an alternative for say, resetting one's Windows password if missing.
+**Ophcrack** is an open-source program that uses rainbow tables to crack Windows XP log-in passwords using LM hashes. It's a popular tool for recovering Windows passwords, as an alternative for say, resetting one's Windows password if missing.
 
 You may view [Ophcrack's How-to Guide](https://sourceforge.net/p/ophcrack/wiki/ophcrack%20Howto/), but you'll primarily want to focus on their free [Ophcrack Rainbow Tables](https://ophcrack.sourceforge.io/tables.php) page.
 
